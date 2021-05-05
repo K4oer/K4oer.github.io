@@ -148,169 +148,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://k4oer.gitee.io/2021/05/05/%E3%80%90%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA%E3%80%91%E4%BD%BF%E7%94%A8Ida&&OD%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.png">
-      <meta itemprop="name" content="K4oer">
-      <meta itemprop="description" content="Time is water">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="K4oer'Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/05/%E3%80%90%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA%E3%80%91%E4%BD%BF%E7%94%A8Ida&&OD%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">简单栈溢出</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-05 00:00:00 / 修改时间：16:32:12" itemprop="dateCreated datePublished" datetime="2021-05-05T00:00:00+08:00">2021-05-05</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define PASSWORD <span class="string">&quot;1234567&quot;</span></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">verify_password</span>(<span class="params">char *password</span>)</span>&#123;</span><br><span class="line">	int authentication;</span><br><span class="line">	char buffer[<span class="number">8</span>];</span><br><span class="line">	authentication=strcmp(password, PASSWORD);</span><br><span class="line">	strcpy(buffer,password);</span><br><span class="line">	<span class="keyword">return</span> authentication;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">main</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	int valid_flag=<span class="number">0</span>;</span><br><span class="line">	char password[<span class="number">1024</span>];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		printf(<span class="string">&quot;please input password:  &quot;</span>);</span><br><span class="line">		scanf(<span class="string">&quot;%s&quot;</span>,password);</span><br><span class="line"></span><br><span class="line">		valid_flag=verify_password(password);</span><br><span class="line">		<span class="keyword">if</span>(valid_flag)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(<span class="string">&quot;incorrect password!\n\n&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			printf(<span class="string">&quot;congratulations! you have passed the verification\n\n&quot;</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="IDA分析"><a href="#IDA分析" class="headerlink" title="IDA分析"></a>IDA分析</h3><ul>
-<li><ol>
-<li>打开exe文件提示输入密码，随便输入显示incorrect<br><img src="https://img-blog.csdnimg.cn/20210502190843989.png#pic_center" alt="在这里插入图片描述"></li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><ol start="2">
-<li>将exe文件拖入ida中，找到main函数</li>
-</ol>
-</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20210502190931415.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<ul>
-<li><ol start="3">
-<li>分析函数逻辑 </li>
-</ol>
-</li>
-</ul>
-<p>（1）第一块为基本的数据初始化以及分配栈空间过程。<br><img src="https://img-blog.csdnimg.cn/20210502190958815.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">push ebp:压参数入栈，</span><br><span class="line"></span><br><span class="line">mov ebp,esp:记录函数的栈帧底部地址，</span><br><span class="line"></span><br><span class="line">sub esp,444h  为函数申请444H大小的栈空间。</span><br><span class="line"></span><br><span class="line">push ebx </span><br><span class="line"></span><br><span class="line">push esi   : 寄存器压栈，保存现场</span><br><span class="line"></span><br><span class="line">push edi </span><br><span class="line"></span><br><span class="line">lea edi ,[ebp+var_444] : 循环操作的起始地址</span><br><span class="line"></span><br><span class="line">mov ecx,111h ：循环次数</span><br><span class="line"></span><br><span class="line">mov  eax , 0CCCCCCCCh ：循环填入eax的数</span><br><span class="line"></span><br><span class="line">rep stosd : 开始循环</span><br><span class="line"></span><br><span class="line">mov [ebp+var_4],0  </span><br></pre></td></tr></table></figure>
-
-
-
-<p>（2）</p>
-<p><img src="https://img-blog.csdnimg.cn/2021050219110594.png" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mov eax,1 : eax寄存器赋值为1</span><br><span class="line"></span><br><span class="line">test eax,eax : 判断eax 是否为0</span><br><span class="line"></span><br><span class="line">jz short loc_401117 若为0，则跳转到 loc _401117</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>(3)  进入循环</p>
-<p><img src="https://img-blog.csdnimg.cn/20210502191127129.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">push    offset aPleaseInputPas ; &quot;please input password:  &quot;  &#x2F;&#x2F;设置&quot;please input password:&quot;偏移量</span><br><span class="line">call    _printf										 	&#x2F;&#x2F;调用printf函数</span><br><span class="line">add     esp, 4											&#x2F;&#x2F;esp 栈帧上移4位 </span><br><span class="line">lea     ecx, [ebp+Source]								&#x2F;&#x2F; 将对象Source地址放入ecx寄存器</span><br><span class="line">push    ecx											   &#x2F;&#x2F; ecx入栈</span><br><span class="line">push    offset Format   ; &quot;%s&quot;							&#x2F;&#x2F;设置&quot;%s&quot;偏移量</span><br><span class="line">call    _scanf										  &#x2F;&#x2F;调用scanf函数</span><br><span class="line">add     esp, 8										  &#x2F;&#x2F;esp栈帧上移8位</span><br><span class="line">lea     edx, [ebp+Source]                              &#x2F;&#x2F;将Source地址放入edx数据寄存器</span><br><span class="line">push    edx             ; Source					   &#x2F;&#x2F;edx入栈</span><br><span class="line">call    sub_401005									 &#x2F;&#x2F;调用sub_401005函数</span><br><span class="line">add     esp, 4										&#x2F;&#x2F;esp栈帧上移4位</span><br><span class="line">mov     [ebp+var_4], eax							 &#x2F;&#x2F;将eax赋值给ebp+var_4的地址</span><br><span class="line">cmp     [ebp+var_4], 0								 &#x2F;&#x2F;判断ebp+var_4处的值是否为0</span><br><span class="line">jz      short loc_401106							 &#x2F;&#x2F;为0则跳转到loc_401106函数</span><br></pre></td></tr></table></figure>
-
-<p>(4) 不为0则跳转到如下模块</p>
-<p><img src="https://img-blog.csdnimg.cn/20210502191218885.png" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">push    offset aIncorrectPassw ; &quot;incorrect password!\n\n&quot;   &#x2F;&#x2F;设置&quot;incorrect password!\n&quot;偏移量</span><br><span class="line">call    _printf									&#x2F;&#x2F;调用printf函数输出offset</span><br><span class="line">add     esp, 4									&#x2F;&#x2F; esp栈帧移4位</span><br><span class="line">jmp     short loc_401115						&#x2F;&#x2F; 无条件跳转到loc_401115函数</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20210502191240914.png" alt="在这里插入图片描述"></p>
-<p>进入下一层循环</p>
-<p>（5)ebp+var_4为0 跳出循环，跳转到loc_401106<br><img src="https://img-blog.csdnimg.cn/20210502191308339.png" alt="在这里插入图片描述"></p>
-<p>调用printf函数输出”congratulations! you have passed the ve”…跳转到short loc_401117</p>
-<p>（6）</p>
-<p>调用system执行“pause”命令停止程序，弹出edi,esi,ebx寄存器，调用chkesp进行函数栈的销毁，ebp重新回到main函数基址</p>
-<p>（7）进入sub_401005函数</p>
-<ul>
-<li><pre><code>push    ebp     
-mov     ebp, esp
-sub     esp, 4Ch
-push    ebx
-push    esi
-push    edi
-lea     edi, [ebp+var_4C]
-mov     ecx, 13h
-mov     eax, 0CCCCCCCCh
-rep stosd                       //以上为函数初始化及分配栈空间过程
-push    offset Str2     ; &quot;1234567&quot;       //设置字符串1234567的偏移量
-mov     eax, [ebp+Source]
-push    eax             ; Str1            //将ebp+source的值传给eax，eax入栈
-call    _strcmp                         //调用strcmp函数    
-add     esp, 8                           //为Destination数组分配8字节栈空间
-mov     [ebp+var_4], eax
-mov     ecx, [ebp+Source]
-push    ecx             ; Source
-lea     edx, [ebp+Destination]          //将对象Destination数组放入edx寄存器
-push    edx             ; Destination    //edx入栈
-call    _strcpy                          //调用strcpy函数将Source值赋给Destination数组
-add     esp, 8             
-mov     eax, [ebp+var_4]
-pop     edi
-pop     esi
-pop     ebx
-add     esp, 4Ch
-cmp     ebp, esp
-call    __chkesp   
-mov     esp, ebp
-pop     ebp  
-retn 
-sub_401020 endp                          //以上为栈销毁过程
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 3.在main函数处按F5反编译查看伪码，可以清楚看到函数逻辑，在sub_401020函数中开辟了8字节的栈空间，然后将输入的数据赋值到这个栈空间中。输入一串字符，如果输入为&quot;1234567&quot;即定义的正确密码，v5为0，跳出循环，输出congratulations!...否则输出incorrect password!</span><br><span class="line"></span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502191437504.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 使用OD分析</span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502191635129.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70)</span><br><span class="line"></span><br><span class="line">   打开OD，OD停在了程序的入口点，但这不是main函数的入口点，，F8步过这些call函数，到call 0040100A,F7进入main函数</span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502191659554.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   main函数里的代码在之前IDA中已经分析过,F8到scanf函数，输入qqqqqq，步过来到00401005</span><br><span class="line"></span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502191723889.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   注意到EDX中存放的是刚输入的qqqqqq，此时EBP值为0019FF30,EIP值为004010E6</span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502191811909.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   进入子函数，来到00401059，它的上一步猜测应该就是strcpy函数即产生栈溢出漏洞的地方，查看EAX寄存器的值</span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502191838196.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM0NTA1,size_16,color_FFFFFF,t_70)</span><br><span class="line"></span><br><span class="line">   71是q的ASCII，输入6个q,所以有6个71,推测0019FAD0处为子函数返回值v3。</span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502191856557.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​          重新载入程序，这次输入qqqqqqqqqq，查看0019FAD0，发现存在栈溢出</span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2021050219191387.png)</span><br><span class="line"></span><br><span class="line">​        </span><br><span class="line"></span><br><span class="line">- 5.总结分析</span><br><span class="line"></span><br><span class="line">  通过以上分析可以看出此函数存在栈溢出问题，Destination数组空间为8位，根据函数逻辑，输入的Source数组的值赋值给了Destination数组，而在栈中变量v3和Destination数组是相邻存储的，一旦Source数组的值超过了Destination数组空间大小就会覆盖v3变量原有的值，发生栈溢出。由上文可知，当v3(v5)为0的时候程序会判定输入的密码正确，根据intel系统设计原因，内存中的数据按照4字节（DWORD）逆序存储（小端存储），当v5为1时，内存中存储的时0x01000000,如果我们输入包含8个字符的错误密码&quot;aaaaaaaa&quot;,那么字符串截断符0x00将写入v5变量，这时溢出数组的一个字节0x00将恰好把逆序存放的v5变量改为0x00000000,因而main函数会判断正确输出congratulation。</span><br><span class="line"></span><br><span class="line">  因此输入qqqqqqqq,查看堆栈，成功覆盖，并且输出正确</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502192048800.png)</span><br><span class="line"></span><br><span class="line">  ![在这里插入图片描述](https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20210502192128632.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  注意不是所有8位及以上的字符数组都可以,必须满足字符串截断符覆盖变量v5后为0。如果输入字符串小于1234567， 如01234567，虽然为8位 ，strcmp返回值为-1（一般来说，有些会把两个字符的ASCII码之差作为比较结果由函数值返回），在内存中按照补码存负数，那么字符串截断后符0x00覆盖后就变为0x00ffffff，还是非0，密码错误</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-//表示数字-10
-原码：     0000 0000 0000 0000 0000 0000 0000 1010
-反码：     1111 1111 1111 1111 1111 1111 1111 0101
-补码：     1111 1111 1111 1111 1111 1111 1111 0110 //-10在内存中存储的二进制数
-16进制：0x   f    f    f    f    f    f    f    6
-0xff ff ff f6
-小端方式：f6 ff ff ff
-</code></pre>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://k4oer.gitee.io/2021/05/05/DES%E7%AE%97%E6%B3%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -325,7 +162,7 @@ sub_401020 endp                          //以上为栈销毁过程
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/05/05/DES%E7%AE%97%E6%B3%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">DES算法逆向分析</a>
+            <a href="/2021/05/05/DES%E7%AE%97%E6%B3%95%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -336,7 +173,7 @@ sub_401020 endp                          //以上为栈销毁过程
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-05 00:00:00 / 修改时间：16:20:36" itemprop="dateCreated datePublished" datetime="2021-05-05T00:00:00+08:00">2021-05-05</time>
+              <time title="创建时间：2021-05-05 19:58:26 / 修改时间：16:45:54" itemprop="dateCreated datePublished" datetime="2021-05-05T19:58:26+08:00">2021-05-05</time>
             </span>
 
           <br>
@@ -584,7 +421,7 @@ sub_401020 endp                          //以上为栈销毁过程
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -640,12 +477,12 @@ sub_401020 endp                          //以上为栈销毁过程
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">9k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">8 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
